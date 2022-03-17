@@ -1,0 +1,50 @@
+---
+applications:
+  - guillotina_chat
+  - guillotina.contrib.catalog.pg
+  - guillotina.contrib.swagger
+  - guillotina.contrib.dbusers
+  
+databases:
+  db:
+    storage: postgresql
+    dsn: postgresql://postgres@localhost:5444/comune1
+    read_only: false
+host: localhost
+port: 8080
+root_user:
+  password: root
+auth_extractors:
+  - guillotina.auth.extractors.BearerAuthPolicy
+  - guillotina.auth.extractors.BasicAuthPolicy
+  - guillotina.auth.extractors.WSTokenAuthPolicy
+auth_token_validators:
+  - guillotina.auth.validators.SaltedHashPasswordValidator
+  - guillotina.auth.validators.JWTValidator
+cors:
+  allow_origin:
+    - http://localhost:8080
+    - http://localhost:3000    
+    - "chrome-extension://*"
+  allow_methods:
+    - GET
+    - POST
+    - DELETE
+    - HEAD
+    - PATCH
+    - PUT
+    - OPTIONS
+  allow_headers:
+    - "*"
+  expose_headers:
+    - "*"
+  allow_credentials: true
+  max_age: 3660
+jwt:
+  secret: provasecretjwt%ttyer_EEEEE
+  algorithm: HS256
+jwk:
+  k: OEyXrir4_yXd0Wz1TfSPneXnzpuZD051pHlOYiojFuI
+  kty: oct
+jsapps:
+  +admin: guillotina:static/executioner

@@ -1,0 +1,10 @@
+*.pyc
+.eggs
+__pycache__
+*.egg-info
+.cache
+.vscode
+extras
+include
+/lib
+pip-selfcheck.json
